@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The AR Business Card</title>
+  <meta name="description" content="AR.js Business Card">
+  <meta name="author" content="Shivaprasad">
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+
+	<script>
+	  AFRAME.registerComponent('navigate-on-click', {
+	    schema: {
+	      url: {default: ''}
+	    },
+	    init: function () {
+	      var data = this.data;
+	      var el = this.el;
+	      el.addEventListener('click', function () {
+		window.open(data.url, '_blank');
+	      });
+	    }
+	  });        
+	</script>
+</head>
+	
+<body style='margin : 0px; overflow: hidden;'>
+	<a-scene embedded arjs='trackingMethod: best;'>
+		
+		<a-assets>
+			<img id="GDC_icon" src="https://static.wixstatic.com/media/b5830c_cf1788b5b51f4906926610566b3ab04f~mv2.png/v1/fill/w_116,h_115,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/cnde.png">
+			<img id="mail_icon" src="https://cdn4.iconfinder.com/data/icons/logo-brand/512/gmail_google_mail_email-512.png">
+			<img id="linkedin_icon" src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_likedin-512.png">
+			<img id="scholor_icon" src="https://cdn2.iconfinder.com/data/icons/school-building-3/64/6-512.png">
+		</a-assets>
+		
+		<a-plane rotation="-90 0 0" color="#3199f9" opacity="0" navigate-on-click="url: https://www.linkedin.com/in/utkarshgpta/">
+			<a-image src="https://raw.githubusercontent.com/Shivaprasad0703/KB-Sir/main/WEBAR/KB%20sir%20Business%20card.jpg"></a-image>
+			<a-text align="center" value="Hello folks Prof. KB here,click on the icons below and know about me" color="black" width="1" z-offset="0.1"></a-text>
+		</a-plane>
+		
+		<a-plane position="0 0 0.8" color="transparent" opacity="0" width="2" height="0.3" rotation="-90 0 0">
+			<a-box src="#GDC_icon" position="-0.4 0 0" depth="0.15" height="0.15" width="0.15" navigate-on-click="url: https://www.cnde.in/">
+				<a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite"></a-animation>
+			</a-box>
+			<a-box src="#mail_icon" position="0 0 0" depth="0.15" height="0.15" width="0.15" navigate-on-click="url: mailto: shivumite@gmail.com">
+				<a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite"></a-animation>
+			</a-box>
+			<a-box src="#linkedin_icon" position="0.4 0 0" depth="0.15" height="0.15" width="0.15" navigate-on-click="url: https://www.linkedin.com/in/krishnan-balasubramanian-534145157/">
+				<a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite"></a-animation>
+			</a-box>
+			<a-box src="#scholor_icon" position="0.8 0 0" depth="0.15" height="0.15" width="0.15" navigate-on-click="url: https://scholar.google.com/citations?user=yYFBxAwAAAAJ">
+				<a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite"></a-animation>
+			</a-box>
+		</a-plane>
+		
+		<a-plane position="1.2 0 0" width="1" height="1" rotation="-90 0 0" opcatity="1">
+			<a-image src="img/assets/nyancat.jpg"></a-image>
+		</a-plane>
+		
+		<a-entity id="camera" cursor="rayOrigin: mouse"></a-entity>
+		<a-marker-camera preset='hiro'></a-marker-camera>
+	</a-scene>
+</body>
+</html>
